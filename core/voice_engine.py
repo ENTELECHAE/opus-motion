@@ -18,8 +18,12 @@ import wave
 import urllib.request
 import urllib.error
 from typing import Dict, List, Optional, Any, Tuple
-import numpy as np
-import scipy.signal as signal
+try:
+    import numpy as np
+    import scipy.signal as signal
+except ImportError:
+    np = None
+    signal = None
 
 VOICE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "voices")
 TAKES_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "takes")

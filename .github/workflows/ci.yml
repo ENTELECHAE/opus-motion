@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.9', '3.10', '3.11', '3.12']
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Verify CLI Commands
+        run: |
+          python cli.py --help
+          python cli.py styles --list | head -n 20
+          python cli.py prompts --list | head -n 20
+          python cli.py voice --list
+          python cli.py proxy
+
+      - name: Validate Catalog JSON Integrity
+        run: |
+          python -c "import json; s = json.load(open('data/styles.json')); print(f'Styles catalog OK: {len(s.get(\"styles\", []))} styles')"
+          python -c "import json; p = json.load(open('data/prompts.json')); print(f'Prompts catalog OK: {len(p.get(\"prompts\", []))} prompts')"
+          python -c "import json; v = json.load(open('data/voice_profiles.json')); print(f'Voice catalog OK: {len(v.get(\"profiles\", []))} profiles')"

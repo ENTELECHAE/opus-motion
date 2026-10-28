@@ -1,0 +1,536 @@
+{
+  "narrator-david": {
+    "id": "narrator-david",
+    "name": "Sir David (Documentary)",
+    "gender": "male",
+    "tone": "reverent, deep, articulate",
+    "base_pitch_hz": 110.0,
+    "speaking_rate": 0.95,
+    "accent": "british_rp",
+    "acoustic_signature": {
+      "clarity": 0.95,
+      "warmth": 0.88,
+      "air": 0.72
+    },
+    "ref_audio": null
+  },
+  "noir-marlowe": {
+    "id": "noir-marlowe",
+    "name": "Jack Marlowe (Noir Detective)",
+    "gender": "male",
+    "tone": "gravelly, cynical, rhythmic drawl",
+    "base_pitch_hz": 95.0,
+    "speaking_rate": 0.9,
+    "accent": "chicago_noir",
+    "acoustic_signature": {
+      "clarity": 0.82,
+      "warmth": 0.92,
+      "smoke": 0.85
+    },
+    "ref_audio": null
+  },
+  "anime-rin": {
+    "id": "anime-rin",
+    "name": "Rin (Anime Heroine)",
+    "gender": "female",
+    "tone": "spirited, bright, resonant",
+    "base_pitch_hz": 240.0,
+    "speaking_rate": 1.1,
+    "accent": "expressive_standard",
+    "acoustic_signature": {
+      "clarity": 0.98,
+      "warmth": 0.75,
+      "energy": 0.94
+    },
+    "ref_audio": null
+  },
+  "mascot-clawd": {
+    "id": "mascot-clawd",
+    "name": "Clawd (Whimsical Mascot)",
+    "gender": "neutral",
+    "tone": "friendly, curious, musical paper",
+    "base_pitch_hz": 180.0,
+    "speaking_rate": 1.02,
+    "accent": "gentle",
+    "acoustic_signature": {
+      "clarity": 0.9,
+      "warmth": 0.95,
+      "playfulness": 0.92
+    },
+    "ref_audio": null
+  },
+  "clone-phantom_architect-1793002624": {
+    "id": "clone-phantom_architect-1793002624",
+    "name": "Phantom Architect",
+    "gender": "neutral",
+    "tone": "Cloned timbre (Bass) from test_take.wav",
+    "base_pitch_hz": 77.9,
+    "formants": {
+      "f1": 280.4,
+      "f2": 740.1,
+      "f3": 1246.4
+    },
+    "speaking_rate": 1.0,
+    "accent": "Cyberpunk",
+    "transcript": "",
+    "acoustic_signature": {
+      "duration_sec": 4.7,
+      "sample_rate": 22050,
+      "estimated_pitch_hz": 77.9,
+      "formants": {
+        "f1": 280.4,
+        "f2": 740.1,
+        "f3": 1246.4
+      },
+      "speaking_rate": 1.0,
+      "clarity": 0.99,
+      "warmth": 0.94,
+      "energy_rms": -11.8,
+      "cloned_method": "voicestudio_rea_acoustic_f0_formants",
+      "vocal_register": "Bass",
+      "snr_db": 69.7,
+      "clipping_pct": 0.0,
+      "quality_status": "pristine"
+    },
+    "ref_audio_path": "C:\\Users\\tantr\\OneDrive\\Desktop\\ENTELECHAE\\repos entele\\motion hybrid\\opus-motion\\data\\voices\\clone-phantom_architect-1793002624.wav",
+    "created_at": "2026-10-26 13:47:04",
+    "is_preset": false
+  },
+  "clone-my_voice__clone_-1793005590": {
+    "id": "clone-my_voice__clone_-1793005590",
+    "name": "My Voice (Clone)",
+    "gender": "neutral",
+    "tone": "Microphone voice clone",
+    "base_pitch_hz": 145.0,
+    "formants": {
+      "f1": 522.0,
+      "f2": 1377.5,
+      "f3": 2320.0
+    },
+    "speaking_rate": 1.0,
+    "accent": "Natural",
+    "transcript": "The stars flickered over the obsidian towers as our ship breached the atmosphere.",
+    "acoustic_signature": {
+      "duration_sec": 1.92,
+      "sample_rate": 22050,
+      "estimated_pitch_hz": 145.0,
+      "formants": {
+        "f1": 522.0,
+        "f2": 1377.5,
+        "f3": 2320.0
+      },
+      "speaking_rate": 1.0,
+      "clarity": 0.99,
+      "warmth": 0.88,
+      "energy_rms": -4.8,
+      "cloned_method": "voicestudio_rea_acoustic_f0_formants",
+      "vocal_register": "Baritone",
+      "snr_db": 50.2,
+      "clipping_pct": 1.15,
+      "quality_status": "caution"
+    },
+    "ref_audio_path": "C:\\Users\\tantr\\OneDrive\\Desktop\\ENTELECHAE\\repos entele\\motion hybrid\\opus-motion\\data\\voices\\clone-my_voice__clone_-1793005590.wav",
+    "created_at": "2026-10-26 14:36:30",
+    "is_preset": false
+  },
+  "clone-my_voice__clone_-1793005593": {
+    "id": "clone-my_voice__clone_-1793005593",
+    "name": "My Voice (Clone)",
+    "gender": "neutral",
+    "tone": "Microphone voice clone",
+    "base_pitch_hz": 145.0,
+    "formants": {
+      "f1": 522.0,
+      "f2": 1377.5,
+      "f3": 2320.0
+    },
+    "speaking_rate": 1.0,
+    "accent": "Natural",
+    "transcript": "The stars flickered over the obsidian towers as our ship breached the atmosphere.",
+    "acoustic_signature": {
+      "duration_sec": 1.92,
+      "sample_rate": 22050,
+      "estimated_pitch_hz": 145.0,
+      "formants": {
+        "f1": 522.0,
+        "f2": 1377.5,
+        "f3": 2320.0
+      },
+      "speaking_rate": 1.0,
+      "clarity": 0.99,
+      "warmth": 0.88,
+      "energy_rms": -4.8,
+      "cloned_method": "voicestudio_rea_acoustic_f0_formants",
+      "vocal_register": "Baritone",
+      "snr_db": 50.2,
+      "clipping_pct": 1.15,
+      "quality_status": "caution"
+    },
+    "ref_audio_path": "C:\\Users\\tantr\\OneDrive\\Desktop\\ENTELECHAE\\repos entele\\motion hybrid\\opus-motion\\data\\voices\\clone-my_voice__clone_-1793005593.wav",
+    "created_at": "2026-10-26 14:36:33",
+    "is_preset": false
+  },
+  "clone-my_voice__clone_-1793005596": {
+    "id": "clone-my_voice__clone_-1793005596",
+    "name": "My Voice (Clone)",
+    "gender": "neutral",
+    "tone": "Microphone voice clone",
+    "base_pitch_hz": 145.0,
+    "formants": {
+      "f1": 522.0,
+      "f2": 1377.5,
+      "f3": 2320.0
+    },
+    "speaking_rate": 1.0,
+    "accent": "Natural",
+    "transcript": "The stars flickered over the obsidian towers as our ship breached the atmosphere.",
+    "acoustic_signature": {
+      "duration_sec": 1.92,
+      "sample_rate": 22050,
+      "estimated_pitch_hz": 145.0,
+      "formants": {
+        "f1": 522.0,
+        "f2": 1377.5,
+        "f3": 2320.0
+      },
+      "speaking_rate": 1.0,
+      "clarity": 0.99,
+      "warmth": 0.88,
+      "energy_rms": -4.8,
+      "cloned_method": "voicestudio_rea_acoustic_f0_formants",
+      "vocal_register": "Baritone",
+      "snr_db": 50.2,
+      "clipping_pct": 1.15,
+      "quality_status": "caution"
+    },
+    "ref_audio_path": "C:\\Users\\tantr\\OneDrive\\Desktop\\ENTELECHAE\\repos entele\\motion hybrid\\opus-motion\\data\\voices\\clone-my_voice__clone_-1793005596.wav",
+    "created_at": "2026-10-26 14:36:37",
+    "is_preset": false
+  },
+  "clone-my_voice__clone_-1793005611": {
+    "id": "clone-my_voice__clone_-1793005611",
+    "name": "My Voice (Clone)",
+    "gender": "neutral",
+    "tone": "Microphone voice clone",
+    "base_pitch_hz": 145.0,
+    "formants": {
+      "f1": 522.0,
+      "f2": 1377.5,
+      "f3": 2320.0
+    },
+    "speaking_rate": 1.0,
+    "accent": "Natural",
+    "transcript": "The stars flickered over the obsidian towers as our ship breached the atmosphere.",
+    "acoustic_signature": {
+      "duration_sec": 1.92,
+      "sample_rate": 22050,
+      "estimated_pitch_hz": 145.0,
+      "formants": {
+        "f1": 522.0,
+        "f2": 1377.5,
+        "f3": 2320.0
+      },
+      "speaking_rate": 1.0,
+      "clarity": 0.99,
+      "warmth": 0.88,
+      "energy_rms": -4.8,
+      "cloned_method": "voicestudio_rea_acoustic_f0_formants",
+      "vocal_register": "Baritone",
+      "snr_db": 50.2,
+      "clipping_pct": 1.15,
+      "quality_status": "caution"
+    },
+    "ref_audio_path": "C:\\Users\\tantr\\OneDrive\\Desktop\\ENTELECHAE\\repos entele\\motion hybrid\\opus-motion\\data\\voices\\clone-my_voice__clone_-1793005611.wav",
+    "created_at": "2026-10-26 14:36:51",
+    "is_preset": false
+  },
+  "design-designed_voice-1793007717": {
+    "id": "design-designed_voice-1793007717",
+    "name": "Designed Voice",
+    "gender": "neutral",
+    "tone": "Acoustically designed voice",
+    "base_pitch_hz": 145.0,
+    "formants": {
+      "f1": 522.0,
+      "f2": 1377.5,
+      "f3": 2320.0
+    },
+    "speaking_rate": 1.0,
+    "accent": "natural",
+    "transcript": "This voice was synthesized through VoiceStudio parametric voice design.",
+    "acoustic_signature": {
+      "duration_sec": 4.0,
+      "sample_rate": 22050,
+      "estimated_pitch_hz": 145.0,
+      "vocal_register": "Baritone",
+      "snr_db": 30.5,
+      "clipping_pct": 0.0,
+      "clarity": 0.9,
+      "warmth": 0.85,
+      "breathiness": 0.0,
+      "quality_status": "pristine",
+      "design_preset": "custom",
+      "designed": true
+    },
+    "ref_audio_path": "C:\\Users\\tantr\\OneDrive\\Desktop\\ENTELECHAE\\repos entele\\motion hybrid\\opus-motion\\data\\voices\\design-designed_voice-1793007717.wav",
+    "created_at": "2026-10-26 15:11:58",
+    "is_preset": false,
+    "is_design": true
+  },
+  "clone-studio_master_voice-1793017271": {
+    "id": "clone-studio_master_voice-1793017271",
+    "name": "Studio Master Voice",
+    "gender": "male",
+    "tone": "Articulate documentary voice",
+    "base_pitch_hz": 156.9,
+    "formants": {
+      "f1": 564.8,
+      "f2": 1490.5,
+      "f3": 2510.4
+    },
+    "speaking_rate": 1.0,
+    "accent": "British RP",
+    "target_voice": "en-GB-RyanNeural",
+    "transcript": "Testing accurate voice cloning pipeline.",
+    "acoustic_signature": {
+      "duration_sec": 5.52,
+      "sample_rate": 24000,
+      "estimated_pitch_hz": 156.9,
+      "formants": {
+        "f1": 564.8,
+        "f2": 1490.5,
+        "f3": 2510.4
+      },
+      "speaking_rate": 1.0,
+      "clarity": 0.99,
+      "warmth": 0.87,
+      "energy_rms": -23.4,
+      "cloned_method": "voicestudio_rea_acoustic_f0_formants",
+      "vocal_register": "Baritone",
+      "snr_db": 86.1,
+      "clipping_pct": 0.0,
+      "quality_status": "pristine"
+    },
+    "ref_audio_path": "C:\\Users\\tantr\\OneDrive\\Desktop\\ENTELECHAE\\repos entele\\motion hybrid\\opus-motion\\data\\voices\\clone-studio_master_voice-1793017271.wav",
+    "created_at": "2026-10-26 17:51:11",
+    "is_preset": false
+  },
+  "design-testvoice-1793037571": {
+    "id": "design-testvoice-1793037571",
+    "name": "TestVoice",
+    "gender": "neutral",
+    "tone": "test description",
+    "base_pitch_hz": 145.0,
+    "formants": {
+      "f1": 522.0,
+      "f2": 1377.5,
+      "f3": 2320.0
+    },
+    "speaking_rate": 1.0,
+    "accent": "natural",
+    "target_voice": "en-US-GuyNeural",
+    "transcript": "This voice was synthesized through VoiceStudio parametric voice design.",
+    "acoustic_signature": {
+      "duration_sec": 4.66,
+      "sample_rate": 24000,
+      "estimated_pitch_hz": 145.0,
+      "vocal_register": "Baritone",
+      "snr_db": 30.5,
+      "clipping_pct": 0.0,
+      "clarity": 0.9,
+      "warmth": 0.85,
+      "breathiness": 0.0,
+      "quality_status": "pristine",
+      "design_preset": "custom",
+      "designed": true
+    },
+    "ref_audio_path": "C:\\Users\\tantr\\OneDrive\\Desktop\\ENTELECHAE\\repos entele\\motion hybrid\\opus-motion\\data\\voices\\design-testvoice-1793037571.wav",
+    "created_at": "2026-10-26 23:29:31",
+    "is_preset": false,
+    "is_design": true
+  },
+  "clone-my_voice__clone_-1793042330": {
+    "id": "clone-my_voice__clone_-1793042330",
+    "name": "My Voice (Clone)",
+    "gender": "neutral",
+    "tone": "Microphone voice clone",
+    "base_pitch_hz": 102.1,
+    "nominal_f0": 105.0,
+    "pitch_shift_hz": -2.9,
+    "formants": {
+      "f1": 1768.7,
+      "f2": 3062.2,
+      "f3": 4062.2,
+      "f4": 5062.2
+    },
+    "speaking_rate": 1.0,
+    "pitch_spread_st": 2.63,
+    "voicing_ratio": 0.78,
+    "accent": "Natural",
+    "target_voice": "en-US-AndrewNeural",
+    "transcript": "The stars flickered over the obsidian towers as our ship breached the atmosphere.",
+    "acoustic_signature": {
+      "duration_sec": 8.34,
+      "sample_rate": 48000,
+      "estimated_pitch_hz": 102.1,
+      "formants": {
+        "f1": 1768.7,
+        "f2": 3062.2,
+        "f3": 4062.2,
+        "f4": 5062.2
+      },
+      "speaking_rate": 1.0,
+      "pitch_spread_st": 2.63,
+      "voicing_ratio": 0.78,
+      "clarity": 0.65,
+      "warmth": 0.93,
+      "energy_rms": -34.0,
+      "cloned_method": "voicestudio_rea_lpc_autocorr",
+      "vocal_register": "Bass",
+      "snr_db": 20.6,
+      "clipping_pct": 0.0,
+      "quality_status": "pristine"
+    },
+    "ref_audio_path": "C:\\Users\\tantr\\OneDrive\\Desktop\\ENTELECHAE\\repos entele\\motion hybrid\\opus-motion\\data\\voices\\clone-my_voice__clone_-1793042330.wav",
+    "created_at": "2026-10-27 00:48:51",
+    "is_preset": false
+  },
+  "clone-my_voice__clone_-1793042342": {
+    "id": "clone-my_voice__clone_-1793042342",
+    "name": "My Voice (Clone)",
+    "gender": "neutral",
+    "tone": "Microphone voice clone",
+    "base_pitch_hz": 102.1,
+    "nominal_f0": 105.0,
+    "pitch_shift_hz": -2.9,
+    "formants": {
+      "f1": 1768.7,
+      "f2": 3062.2,
+      "f3": 4062.2,
+      "f4": 5062.2
+    },
+    "speaking_rate": 1.0,
+    "pitch_spread_st": 2.63,
+    "voicing_ratio": 0.78,
+    "accent": "Natural",
+    "target_voice": "en-US-AndrewNeural",
+    "transcript": "The stars flickered over the obsidian towers as our ship breached the atmosphere.",
+    "acoustic_signature": {
+      "duration_sec": 8.34,
+      "sample_rate": 48000,
+      "estimated_pitch_hz": 102.1,
+      "formants": {
+        "f1": 1768.7,
+        "f2": 3062.2,
+        "f3": 4062.2,
+        "f4": 5062.2
+      },
+      "speaking_rate": 1.0,
+      "pitch_spread_st": 2.63,
+      "voicing_ratio": 0.78,
+      "clarity": 0.65,
+      "warmth": 0.93,
+      "energy_rms": -34.0,
+      "cloned_method": "voicestudio_rea_lpc_autocorr",
+      "vocal_register": "Bass",
+      "snr_db": 20.6,
+      "clipping_pct": 0.0,
+      "quality_status": "pristine"
+    },
+    "ref_audio_path": "C:\\Users\\tantr\\OneDrive\\Desktop\\ENTELECHAE\\repos entele\\motion hybrid\\opus-motion\\data\\voices\\clone-my_voice__clone_-1793042342.wav",
+    "created_at": "2026-10-27 00:49:03",
+    "is_preset": false
+  },
+  "clone-my_voice__clone_-1793209662": {
+    "id": "clone-my_voice__clone_-1793209662",
+    "name": "My Voice (Clone)",
+    "gender": "neutral",
+    "tone": "Microphone voice clone",
+    "base_pitch_hz": 119.4,
+    "nominal_f0": 115.0,
+    "pitch_shift_hz": 4.4,
+    "formants": {
+      "f1": 1838.9,
+      "f2": 4463.2,
+      "f3": 5463.2,
+      "f4": 6463.2
+    },
+    "speaking_rate": 1.0,
+    "pitch_spread_st": 5.54,
+    "voicing_ratio": 0.87,
+    "accent": "Natural",
+    "target_voice": "en-NZ-MitchellNeural",
+    "transcript": "The stars flickered over the obsidian towers as our ship breached the atmosphere.",
+    "acoustic_signature": {
+      "duration_sec": 10.98,
+      "sample_rate": 48000,
+      "estimated_pitch_hz": 119.4,
+      "formants": {
+        "f1": 1838.9,
+        "f2": 4463.2,
+        "f3": 5463.2,
+        "f4": 6463.2
+      },
+      "speaking_rate": 1.0,
+      "pitch_spread_st": 5.54,
+      "voicing_ratio": 0.87,
+      "clarity": 0.65,
+      "warmth": 0.92,
+      "energy_rms": -30.8,
+      "cloned_method": "voicestudio_rea_lpc_autocorr",
+      "vocal_register": "Baritone",
+      "snr_db": 27.4,
+      "clipping_pct": 0.0,
+      "quality_status": "pristine"
+    },
+    "ref_audio_path": "C:\\Users\\tantr\\OneDrive\\Desktop\\ENTELECHAE\\repos entele\\motion hybrid\\opus-motion\\data\\voices\\clone-my_voice__clone_-1793209662.wav",
+    "created_at": "2026-10-28 23:17:44",
+    "is_preset": false
+  },
+  "clone-my_voice__clone_-1793209669": {
+    "id": "clone-my_voice__clone_-1793209669",
+    "name": "My Voice (Clone)",
+    "gender": "neutral",
+    "tone": "Microphone voice clone",
+    "base_pitch_hz": 119.4,
+    "nominal_f0": 115.0,
+    "pitch_shift_hz": 4.4,
+    "formants": {
+      "f1": 1838.9,
+      "f2": 4463.2,
+      "f3": 5463.2,
+      "f4": 6463.2
+    },
+    "speaking_rate": 1.0,
+    "pitch_spread_st": 5.54,
+    "voicing_ratio": 0.87,
+    "accent": "Natural",
+    "target_voice": "en-NZ-MitchellNeural",
+    "transcript": "The stars flickered over the obsidian towers as our ship breached the atmosphere.",
+    "acoustic_signature": {
+      "duration_sec": 10.98,
+      "sample_rate": 48000,
+      "estimated_pitch_hz": 119.4,
+      "formants": {
+        "f1": 1838.9,
+        "f2": 4463.2,
+        "f3": 5463.2,
+        "f4": 6463.2
+      },
+      "speaking_rate": 1.0,
+      "pitch_spread_st": 5.54,
+      "voicing_ratio": 0.87,
+      "clarity": 0.65,
+      "warmth": 0.92,
+      "energy_rms": -30.8,
+      "cloned_method": "voicestudio_rea_lpc_autocorr",
+      "vocal_register": "Baritone",
+      "snr_db": 27.4,
+      "clipping_pct": 0.0,
+      "quality_status": "pristine"
+    },
+    "ref_audio_path": "C:\\Users\\tantr\\OneDrive\\Desktop\\ENTELECHAE\\repos entele\\motion hybrid\\opus-motion\\data\\voices\\clone-my_voice__clone_-1793209669.wav",
+    "created_at": "2026-10-28 23:17:51",
+    "is_preset": false
+  }
+}

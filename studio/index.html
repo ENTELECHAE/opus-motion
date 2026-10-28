@@ -1,0 +1,951 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Opus-Motion // AI Film, Animation Styles & Voice Cloning Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="All-in-one cinematic animation prompt catalog, p5/Three.js code director, VoiceStudio voice cloner, and CLIProxyAPI gateway.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23111114%22/><text x=%2250%22 y=%2266%22 font-family=%22sans-serif%22 font-weight=%22bold%22 font-size=%2252%22 fill=%22%23f4f4f5%22 text-anchor=%22middle%22>Ω</text></svg>">
+</head>
+<body>
+
+  <!-- Top App Navigation -->
+  <header>
+    <a href="#" class="brand">
+      <div class="brand-icon">Ω</div>
+      <div>
+        <div class="brand-title">OPUS-MOTION</div>
+        <div style="font-size: 11px; color: var(--text-dim); margin-top: -2px;">hybrid animation & voice studio</div>
+      </div>
+      <span class="brand-badge">v1.0 Pro</span>
+    </a>
+
+    <nav class="nav-tabs">
+      <button class="nav-tab active" data-view="styles-view" id="nav-styles">
+        Styles (59)
+      </button>
+      <button class="nav-tab" data-view="prompts-view" id="nav-prompts">
+        Viral Prompts (703)
+      </button>
+      <button class="nav-tab" data-view="director-view" id="nav-director">
+        Studio Director
+      </button>
+      <button class="nav-tab" data-view="voice-view" id="nav-voice">
+        Voice Cloner
+      </button>
+      <button class="nav-tab" data-view="proxy-view" id="nav-proxy">
+        CLI Proxy
+      </button>
+    </nav>
+
+    <div class="header-actions">
+      <button class="btn btn-primary" onclick="switchView('director-view')">
+        Quick Direct
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Views Container -->
+  <main>
+
+    <!-- VIEW 1: STYLES GALLERY -->
+    <section id="styles-view" class="view-section active">
+      <div class="hero-banner">
+        <div class="hero-badge">CATALOG // 157 CODE-DRIVEN ANIMATION STYLES</div>
+        <h1 class="hero-title">Film Animation Styles in Code</h1>
+        <p class="hero-sub">
+          157 film styles (59 classics + 98 Clawd Best Picture winners) tuned for Claude Opus 5.5 and Gemini. Fully programmatic in Canvas, p5.js, and SVG with video previews.
+        </p>
+      </div>
+
+      <div class="filter-bar">
+        <div class="search-box">
+          <input type="text" id="styles-search" class="search-input" placeholder="Search by style, Chinese name, or keyword (e.g. HD-2D, Anime, Wings)..." oninput="filterStyles()">
+        </div>
+
+        <div class="category-pills" id="style-category-pills">
+          <button class="pill active" onclick="setCategoryFilter('', this)">All Styles</button>
+          <button class="pill pill-clawd" onclick="setCategoryFilter('Clawd', this)">Clawd 98 Best Picture</button>
+          <button class="pill" onclick="setCategoryFilter('Hand-drawn', this)">Hand-drawn & Painting</button>
+          <button class="pill" onclick="setCategoryFilter('East Asian', this)">East Asian Traditions</button>
+          <button class="pill" onclick="setCategoryFilter('Print', this)">Print & Halftone</button>
+          <button class="pill" onclick="setCategoryFilter('Edit', this)">Edit & Documentary</button>
+          <button class="pill" onclick="setCategoryFilter('Evidence', this)">Evidence Films</button>
+          <button class="pill" onclick="setCategoryFilter('Games', this)">Games & 3D</button>
+        </div>
+      </div>
+
+      <div class="cards-grid" id="styles-container">
+        <!-- Rendered dynamically by app.js -->
+        <div style="color: var(--text-muted); padding: 40px;">Loading styles catalog...</div>
+      </div>
+    </section>
+
+    <!-- VIEW 2: VIRAL PROMPTS -->
+    <section id="prompts-view" class="view-section">
+      <div class="hero-banner">
+        <div class="hero-badge">RECIPES // 703 VIRAL PROMPTS & PREVIEWS</div>
+        <h1 class="hero-title">Viral Code-Driven Video Prompts</h1>
+        <p class="hero-sub">
+          Curated prompt recipes with full style video screening previews. Replicate viral AI web animations across Canvas, Three.js, SVG, Shaders, and GSAP.
+        </p>
+      </div>
+
+      <!-- Style Videos Preview Shelf: ALL 59 Style Videos positioned above prompts -->
+      <div class="style-videos-preview-shelf" id="style-videos-shelf">
+        <div class="shelf-header">
+          <div>
+            <div class="shelf-badge">STYLE VIDEO PREVIEWS (59 CINEMATIC NOMINEE FILMS)</div>
+            <h2 class="shelf-title">Cinematic Style Videos Preview</h2>
+            <p class="shelf-sub">Browse and watch all 59 code-directed film animation styles above the viral prompt recipes. Click any video to watch in the theater or inspect its prompt.</p>
+          </div>
+          <div class="shelf-actions">
+            <button class="shelf-nav-btn" onclick="scrollStyleShelf(-1)" aria-label="Previous style video">‹</button>
+            <button class="shelf-nav-btn" onclick="scrollStyleShelf(1)" aria-label="Next style video">›</button>
+          </div>
+        </div>
+        <div class="shelf-track" id="style-videos-shelf-track">
+          <!-- Rendered dynamically by app.js with all 59 style videos -->
+          <div style="color: var(--text-muted); padding: 30px;">Loading style video previews...</div>
+        </div>
+      </div>
+
+      <div class="filter-bar">
+        <div class="search-box">
+          <input type="text" id="prompts-search" class="search-input" placeholder="Search prompts by author, slug, or technique..." oninput="filterPrompts()">
+        </div>
+
+        <div class="category-pills" id="prompts-tech-pills">
+          <button class="pill active" onclick="setTechFilter('', this)">All Tech</button>
+          <button class="pill" onclick="setTechFilter('canvas', this)">Canvas</button>
+          <button class="pill" onclick="setTechFilter('svg', this)">SVG</button>
+          <button class="pill" onclick="setTechFilter('threejs', this)">Three.js</button>
+          <button class="pill" onclick="setTechFilter('shader', this)">Shaders (GLSL)</button>
+          <button class="pill" onclick="setTechFilter('gsap', this)">GSAP</button>
+        </div>
+      </div>
+
+      <div class="cards-grid" id="prompts-container">
+        <!-- Rendered dynamically by app.js -->
+        <div style="color: var(--text-muted); padding: 40px;">Loading prompts catalog...</div>
+      </div>
+    </section>
+
+    <!-- VIEW 3: STUDIO DIRECTOR -->
+    <section id="director-view" class="view-section">
+      <div class="hero-banner">
+        <div class="hero-badge">STUDIO DIRECTOR // PROCEDURAL CODE ENGINE</div>
+        <h1 class="hero-title">Opus-Motion Film Director & Live Canvas</h1>
+        <p class="hero-sub">
+          Synthesize styles, character rigs, and audio scripts into executable procedural animation code.
+        </p>
+      </div>
+
+      <div class="studio-layout">
+        <!-- Left Column: Film Setup -->
+        <div class="panel-card">
+          <h2 style="font-family: var(--font-display); font-size: 16px; margin-bottom: 16px; color: var(--text-main); font-weight: 600;">
+            Film Setup & Direction
+          </h2>
+
+          <div class="form-group">
+            <label class="form-label" for="dir-style-select">Visual Style</label>
+            <select id="dir-style-select" class="form-control" onchange="onDirectorStyleChange()">
+              <!-- Options populated dynamically -->
+            </select>
+            <div id="dir-style-preview" style="margin-top: 10px; cursor: pointer;" onclick="openScreeningRoom(CURRENT_STYLE)" title="Click to watch full style film preview"></div>
+          </div>
+
+          <div class="form-group">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <label class="form-label" style="margin-bottom: 0;" for="dir-char-select">Protagonist / Rig</label>
+              <span class="clawd-badge">Clawd Character Suite</span>
+            </div>
+            <select id="dir-char-select" class="form-control" onchange="onDirectorCharacterChange()">
+              <optgroup label="Clawd Mascot Personas">
+                <option value="clawd_classic" selected>Clawd — Classic Clay Mascot (Anthropic Pixel Rig)</option>
+                <option value="clawd_aviator">Aviator Clawd (1927 Wings · Leather Cap, Goggles & Scarf)</option>
+                <option value="clawd_noir">Noir Detective Clawd (Casablanca · Fedora & Trenchcoat)</option>
+                <option value="clawd_technicolor">Technicolor Fantasy Clawd (1939 Oz · Emerald Sparkles)</option>
+                <option value="clawd_astronaut">Astronaut Clawd (1968 Odyssey · Gold Visor Spacesuit)</option>
+                <option value="clawd_cyber">Cyberpunk Hologram Clawd (1982 Blade Runner · Neon Mesh)</option>
+                <option value="clawd_8bit">8-Bit Arcade Clawd (Chiptune Retro Pixel Sprite)</option>
+                <option value="clawd_watercolor">Watercolor Storybook Clawd (Ghibli Pigment & Petals)</option>
+                <option value="clawd_origami">Origami Cutout Clawd (Stop-Motion Paper Shadows)</option>
+                <option value="clawd_director">Studio Film Director Clawd (Beret, Monocle & Megaphone)</option>
+              </optgroup>
+              <optgroup label="Cinema Guest Rigs">
+                <option value="noir_detective">Jack Marlowe (Noir Detective Silhouette)</option>
+                <option value="cyber_runner">Vex-09 (Hologram Cyborg)</option>
+                <option value="pixel_wanderer">Ember (16-bit RPG Sprite)</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="dir-story">Narrative & Logline</label>
+            <textarea id="dir-story" class="form-control" placeholder="Describe the scene or story (e.g. A tiny robot discovers a glowing flower in an abandoned factory, picks it up, and shields it from acid rain)...">The lighthouse goes dark; a girl carries the last flame through a night forest and up the storm cliffs.</textarea>
+          </div>
+
+          <div class="form-group">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <label class="form-label" style="margin-bottom: 0;" for="dir-duration">Duration</label>
+              <span id="dir-duration-val" style="font-family: var(--font-mono); color: var(--text-main); font-size: 13px;">12 seconds</span>
+            </div>
+            <input type="range" id="dir-duration" class="range-slider" min="5" max="60" value="12" oninput="document.getElementById('dir-duration-val').textContent = this.value + ' seconds'">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="dir-voice-select">Voiceover / Voice Profile</label>
+            <select id="dir-voice-select" class="form-control">
+              <option value="narrator-david">Sir David (Warm Documentary)</option>
+              <option value="noir-marlowe">Jack Marlowe (Gravelly Noir)</option>
+              <option value="anime-rin">Rin (Heroic Anime)</option>
+              <option value="mascot-clawd">Clawd (Cheerful Mascot)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="dir-model-select">Target AI Model</label>
+            <select id="dir-model-select" class="form-control">
+              <option value="claude-opus-5.5">Claude Opus 5.5 (Recommended for Film)</option>
+              <option value="gemini-3.8-flash">Gemini 3.8 Flash (Rapid Code Iteration)</option>
+              <option value="gemini-3.1-pro">Gemini 3.1 Pro (Multimodal Precision)</option>
+              <option value="gpt-5.6">GPT-5.6 (UI & Code Structure)</option>
+            </select>
+          </div>
+
+          <div style="display: flex; gap: 10px; margin-top: 22px;">
+            <button class="btn btn-primary" style="flex: 1;" onclick="generateDirectorPrompt()">
+              Generate Prompt
+            </button>
+            <button class="btn btn-secondary" onclick="speakNarrative()">
+              Preview Voice
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Column: Live Viewport & Code -->
+        <div style="display: flex; flex-direction: column; gap: 18px;">
+          <div class="panel-card" style="padding: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span class="live-status-dot"></span>
+                <span style="font-family: var(--font-display); font-weight: 600; font-size: 13px; color: var(--text-main);">Live Canvas Viewport</span>
+              </div>
+              <div style="display: flex; gap: 6px;" id="emotion-buttons">
+                <button class="pill" onclick="setEmotion('happy')">Happy</button>
+                <button class="pill" onclick="setEmotion('proud')">Proud</button>
+                <button class="pill" onclick="setEmotion('curious')">Curious</button>
+                <button class="pill" onclick="setEmotion('focused')">Focused</button>
+                <button class="pill" onclick="setEmotion('sad')">Sad</button>
+                <button class="pill" onclick="setEmotion('scared')">Scared</button>
+              </div>
+            </div>
+
+            <div class="viewport-stage">
+              <canvas id="live-canvas" width="1920" height="1080"></canvas>
+            </div>
+
+            <div class="timeline-bar">
+              <button class="btn btn-secondary" id="btn-play-pause" onclick="togglePlayState()" style="padding: 5px 12px; font-size: 11px;">
+                <span id="play-icon">Pause</span>
+              </button>
+              <input type="range" class="range-slider" id="studio-scrubber" min="0" max="100" value="0" oninput="seekStudioTime(this.value)">
+              <span class="timestamp" id="studio-time-display">0.00s / 12.0s</span>
+            </div>
+          </div>
+
+          <!-- Generated Prompt Output Card -->
+          <div class="panel-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <h3 style="font-family: var(--font-display); font-size: 14px; color: var(--text-main); font-weight: 600;">
+                Generated AI Director Prompt
+              </h3>
+              <div style="display: flex; gap: 8px;">
+                <button class="btn btn-secondary" style="padding: 5px 10px; font-size: 11.5px;" onclick="copyDirectorPrompt()">
+                  Copy Prompt
+                </button>
+                <button class="btn btn-accent" style="padding: 5px 10px; font-size: 11.5px;" onclick="dispatchToAIProxy()">
+                  Send to Model
+                </button>
+              </div>
+            </div>
+            <pre class="code-preview-box" id="director-prompt-preview">// Click 'Generate Prompt' on the left to synthesize your customized AI director prompt...</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 4: VOICE CLONER & STUDIO (REA) -->
+    <section id="voice-view" class="view-section">
+      <div class="hero-banner">
+        <div class="hero-badge">AUDIO // VOICE STUDIO REA</div>
+        <h1 class="hero-title">VoiceStudio REA // Zero-Shot Voice Cloning & Studio Dubbing</h1>
+        <p class="hero-sub">
+          Extraction from VoiceStudio: Acoustic signature profiling (F0 pitch, formants F1/F2/F3), model-free audio quality radar, numbered takes workflow, zero-shot vocal synthesis, and 60fps viseme dubbing.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <!-- Left: Voice Cloner, Audio Radar, Voice Design & Profile Library -->
+        <div class="panel-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+            <h2 style="font-family: var(--font-display); font-size: 16px; color: var(--text-main); font-weight: 600; margin: 0;">
+              VoiceStudio REA Workspace
+            </h2>
+            <span class="card-tag" style="font-size: 10px;">entelechae-code (127.0.0.1:31415)</span>
+          </div>
+
+          <!-- Top-level VoiceStudio Workspace Switcher -->
+          <div class="voice-mode-tabs" style="margin-bottom: 14px;">
+            <button class="voice-mode-btn active" id="ws-tab-clone" onclick="switchVoiceStudioWorkspace('clone')">
+              Clone from Audio & Radar
+            </button>
+            <button class="voice-mode-btn" id="ws-tab-design" onclick="switchVoiceStudioWorkspace('design')">
+              Voice Design (Parametric)
+            </button>
+          </div>
+
+          <!-- WORKSPACE 1: CLONE & AUDIO QUALITY RADAR -->
+          <div id="ws-clone-panel">
+            <!-- Mic / Upload Sub-tabs -->
+            <div style="display: flex; gap: 6px; margin-bottom: 12px;">
+              <button class="btn btn-secondary active" id="tab-mode-mic" onclick="switchVoiceMode('mic')" style="flex: 1; padding: 6px 10px; font-size: 11.5px;">
+                Mic Record
+              </button>
+              <button class="btn btn-secondary" id="tab-mode-upload" onclick="switchVoiceMode('upload')" style="flex: 1; padding: 6px 10px; font-size: 11.5px;">
+                Upload Reference WAV
+              </button>
+            </div>
+
+            <!-- MODE A: QUICK MIC RECORDING (DEFAULT) -->
+            <div id="mode-mic-section">
+              <!-- Teleprompter / Suggested Reading Prompt -->
+              <div class="teleprompter-box">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <span style="font-size: 10px; font-weight: 600; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px;">
+                    VoiceStudio Teleprompter · Read aloud:
+                  </span>
+                  <button type="button" class="btn btn-secondary" style="padding: 2px 8px; font-size: 10px;" onclick="cyclePrompterText()">
+                    New Phrase
+                  </button>
+                </div>
+                <div class="teleprompter-text" id="teleprompter-phrase">The stars flickered over the obsidian towers as our ship breached the atmosphere.</div>
+              </div>
+
+              <!-- 1-Click Record Button -->
+              <button type="button" class="giant-record-btn" id="btn-giant-record" onclick="toggleInstantRecord()">
+                <span id="record-btn-icon" style="display: none;"></span>
+                <div>
+                  <div id="record-btn-text" style="font-size: 13px; font-weight: 600; letter-spacing: 0.5px;">START RECORDING</div>
+                  <div id="record-btn-sub" style="font-size: 11px; opacity: 0.7; font-weight: 400; margin-top: 2px;">Click to record 5-10s clip</div>
+                </div>
+              </button>
+
+              <!-- Live VU Meter & Timer -->
+              <div class="vu-meter-container" id="vu-meter-container">
+                <div class="vu-meter-fill" id="vu-meter-fill"></div>
+              </div>
+              <div id="record-timer-display" style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px; font-size: 11px; font-family: var(--font-mono); color: var(--text-dim);">
+                <span id="recording-time-text">READY TO RECORD</span>
+                <span id="recording-status-hint">Target: 5–15 seconds</span>
+              </div>
+
+              <!-- Auto-Clone Options -->
+              <div style="margin-top: 12px; display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+                <label style="font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                  <input type="checkbox" id="auto-clone-checkbox" checked style="accent-color: #ffffff;">
+                  <span>Auto-clone & test immediately</span>
+                </label>
+                <input type="text" id="quick-voice-name" class="form-control" style="width: 170px; font-size: 11.5px; padding: 4px 8px;" placeholder="Name (e.g. My Voice)">
+              </div>
+
+              <!-- Ready / Audio Preview Box -->
+              <div class="quick-clone-success-box" id="quick-clone-success-box">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                  <span style="font-weight: 600; font-size: 12px; color: var(--text-main);" id="quick-status-msg">
+                    Audio Sample Captured (Ready to Clone)
+                  </span>
+                  <span id="quick-snr-badge" style="font-size: 10.5px; font-family: var(--font-mono); color: var(--text-muted);"></span>
+                </div>
+                <div style="display: flex; gap: 8px;">
+                  <button type="button" class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;" onclick="playReferenceAudio()">
+                    Listen Back
+                  </button>
+                  <button type="button" class="btn btn-primary" style="flex: 1; padding: 6px 14px; font-size: 12px;" onclick="cloneVoiceProfile(true)">
+                    Clone Voice & Speak
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- MODE B: FILE UPLOAD -->
+            <div id="mode-upload-section" style="display: none;">
+              <div class="form-group">
+                <div class="audio-visualizer-box" id="drop-zone" onclick="document.getElementById('audio-file-input').click()" style="cursor: pointer;">
+                  <input type="file" id="audio-file-input" accept="audio/*,.wav,.mp3,.m4a,.flac,.ogg,.webm" style="display: none;" onchange="handleAudioUpload(event)">
+                  <div id="drop-text" style="text-align: center; color: var(--text-muted); font-size: 12.5px;">
+                    Drop reference WAV / MP3 / FLAC here, or click to upload<br>
+                    <span style="font-size: 11px; color: var(--text-dim);">(5 to 15 seconds optimal · minimum 3s)</span>
+                  </div>
+                  <canvas id="ref-waveform-canvas" style="display: none; width: 100%; height: 65px; border-radius: 4px;"></canvas>
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
+                <input type="text" id="clone-name" class="form-control" placeholder="Voice Name">
+                <input type="text" id="clone-accent" class="form-control" placeholder="Accent (e.g. US, British)">
+              </div>
+              <input type="text" id="clone-desc" class="form-control" style="margin-top: 8px;" placeholder="Timbre / Description (optional)">
+              <input type="text" id="ref-transcript-input" class="form-control" style="margin-top: 8px;" placeholder="Transcript text matching audio (optional)">
+
+              <button type="button" class="btn btn-primary" style="width: 100%; margin-top: 10px;" onclick="cloneVoiceProfile(false)">
+                Extract Acoustic Signature & Save Profile
+              </button>
+            </div>
+            <audio id="ref-audio-element" style="display: none;"></audio>
+
+            <!-- VoiceStudio REA Audio Quality Radar & Spider Chart -->
+            <div class="quality-radar-box" id="quality-radar-box" style="display: block;">
+              <div class="quality-radar-header">
+                <span style="font-size: 11px; font-weight: 600; color: var(--text-main); letter-spacing: 0.5px;">
+                  AUDIO QUALITY RADAR (VOICESTUDIO REA)
+                </span>
+                <span id="radar-status-badge" class="quality-badge-good">Ready for Analysis</span>
+              </div>
+
+              <!-- Hexagonal Spider Radar Chart Canvas -->
+              <div class="radar-canvas-container">
+                <canvas id="quality-radar-canvas" width="280" height="280" class="radar-canvas"></canvas>
+              </div>
+
+              <!-- 6 Key Acoustic Axes Grid -->
+              <div class="metrics-grid-4" style="grid-template-columns: repeat(3, 1fr); gap: 6px;">
+                <div class="metric-mini-card">
+                  <div class="metric-mini-val" id="radar-snr">28.5 dB</div>
+                  <div class="metric-mini-label">SNR (Noise Floor)</div>
+                </div>
+                <div class="metric-mini-card">
+                  <div class="metric-mini-val" id="radar-clipping">0.0%</div>
+                  <div class="metric-mini-label">Saturated Clip</div>
+                </div>
+                <div class="metric-mini-card">
+                  <div class="metric-mini-val" id="radar-duration">8.5s</div>
+                  <div class="metric-mini-label">Window Length</div>
+                </div>
+                <div class="metric-mini-card">
+                  <div class="metric-mini-val" id="radar-silence">0.0s</div>
+                  <div class="metric-mini-label">Dead Air Gaps</div>
+                </div>
+                <div class="metric-mini-card">
+                  <div class="metric-mini-val" id="radar-f0">145 Hz</div>
+                  <div class="metric-mini-label">Est. Pitch (F0)</div>
+                </div>
+                <div class="metric-mini-card">
+                  <div class="metric-mini-val" id="radar-purity">98%</div>
+                  <div class="metric-mini-label">Purity Index</div>
+                </div>
+              </div>
+
+              <!-- Advisory Warnings list -->
+              <div id="radar-advisories" class="advisory-list">
+                <div class="advisory-item">Preflight Clear: Clean background, optimal duration.</div>
+              </div>
+
+              <!-- Deep Formant Cavities breakdown -->
+              <div class="acoustic-signature-bars">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                  <span style="font-size: 11px; font-weight: 600; color: var(--text-dim); text-transform: uppercase;">
+                    Deep Acoustic Resonances
+                  </span>
+                  <span class="lpc-badge">Levinson-Durbin LPC-16</span>
+                </div>
+                <div class="signature-bar-row">
+                  <span style="color: var(--text-dim);">F1 (Chest/Throat): <strong id="sig-f1-val" style="color: #fff;">480 Hz</strong></span>
+                  <div class="sig-bar-track"><div class="sig-bar-fill" id="sig-f1-fill" style="width: 55%;"></div></div>
+                </div>
+                <div class="signature-bar-row">
+                  <span style="color: var(--text-dim);">F2 (Oral Cavity): <strong id="sig-f2-val" style="color: #fff;">1350 Hz</strong></span>
+                  <div class="sig-bar-track"><div class="sig-bar-fill" id="sig-f2-fill" style="width: 68%;"></div></div>
+                </div>
+                <div class="signature-bar-row">
+                  <span style="color: var(--text-dim);">F3 (Timbre Brilliance): <strong id="sig-f3-val" style="color: #fff;">2300 Hz</strong></span>
+                  <div class="sig-bar-track"><div class="sig-bar-fill" id="sig-f3-fill" style="width: 82%;"></div></div>
+                </div>
+                <div class="signature-bar-row">
+                  <span style="color: var(--text-dim);">F4 (Air Shimmer): <strong id="sig-f4-val" style="color: #fff;">3500 Hz</strong></span>
+                  <div class="sig-bar-track"><div class="sig-bar-fill" id="sig-f4-fill" style="width: 88%;"></div></div>
+                </div>
+                <div class="signature-bar-row">
+                  <span style="color: var(--text-dim);">Pitch Spread: <strong id="sig-spread-val" style="color: #fff;">±1.8 st</strong></span>
+                  <div class="sig-bar-track"><div class="sig-bar-fill" id="sig-spread-fill" style="width: 65%;"></div></div>
+                </div>
+                <div class="signature-bar-row">
+                  <span style="color: var(--text-dim);">Voicing Ratio: <strong id="sig-voicing-val" style="color: #fff;">92%</strong></span>
+                  <div class="sig-bar-track"><div class="sig-bar-fill" id="sig-voicing-fill" style="width: 92%;"></div></div>
+                </div>
+                <div class="signature-bar-row">
+                  <span style="color: var(--text-dim);">Warmth & Harmonicity: <strong id="sig-warmth-val" style="color: #fff;">0.88</strong></span>
+                  <div class="sig-bar-track"><div class="sig-bar-fill" id="sig-warmth-fill" style="width: 88%;"></div></div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- WORKSPACE 2: VOICE DESIGN (PARAMETRIC) -->
+          <div id="ws-design-panel" style="display: none;">
+            <div style="margin-bottom: 12px;">
+              <label class="form-label" for="design-desc" style="display: flex; justify-content: space-between;">
+                <span>Voice Description & Timbre</span>
+                <span style="font-size: 10px; color: var(--text-dim);">Natural Language Prompt</span>
+              </label>
+              <textarea id="design-desc" class="form-control" style="min-height: 80px;" placeholder="Describe the voice (e.g. A gravelly noir detective with a dry baritone drawl and smoke-cured warmth)...">A warm, distinguished documentary narrator with articulate British RP accent and deep reverberant baritone resonance.</textarea>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
+              <div>
+                <label class="form-label" for="design-name">Voice Name</label>
+                <input type="text" id="design-name" class="form-control" value="Sir David II">
+              </div>
+              <div>
+                <label class="form-label" for="design-accent">Accent & Regionality</label>
+                <input type="text" id="design-accent" class="form-control" value="British RP">
+              </div>
+            </div>
+
+            <!-- Personality Presets Chips -->
+            <label class="form-label" style="margin-bottom: 6px;">VoiceStudio Personality Presets</label>
+            <div class="voice-design-presets-grid">
+              <div class="personality-preset-chip active" onclick="applyVoiceDesignPreset('narrator', this)">
+                <div class="preset-chip-title">Narrator</div>
+                <div class="preset-chip-desc">Deep Baritone · 110 Hz</div>
+              </div>
+              <div class="personality-preset-chip" onclick="applyVoiceDesignPreset('detective', this)">
+                <div class="preset-chip-title">Noir Detective</div>
+                <div class="preset-chip-desc">Gravelly Bass · 92 Hz</div>
+              </div>
+              <div class="personality-preset-chip" onclick="applyVoiceDesignPreset('anime', this)">
+                <div class="preset-chip-title">Anime Heroine</div>
+                <div class="preset-chip-desc">Bright Soprano · 238 Hz</div>
+              </div>
+              <div class="personality-preset-chip" onclick="applyVoiceDesignPreset('clawd', this)">
+                <div class="preset-chip-title">Clawd Mascot</div>
+                <div class="preset-chip-desc">Playful Tenor · 178 Hz</div>
+              </div>
+              <div class="personality-preset-chip" onclick="applyVoiceDesignPreset('cyber', this)">
+                <div class="preset-chip-title">Cyber Synth</div>
+                <div class="preset-chip-desc">Resonant AI · 140 Hz</div>
+              </div>
+              <div class="personality-preset-chip" onclick="applyVoiceDesignPreset('sage', this)">
+                <div class="preset-chip-title">Ancient Sage</div>
+                <div class="preset-chip-desc">Gentle Alto · 128 Hz</div>
+              </div>
+            </div>
+
+            <!-- Parametric Acoustic Sliders -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+              <div class="form-group" style="margin-bottom: 0;">
+                <div style="display: flex; justify-content: space-between;">
+                  <label class="form-label" for="design-f0">Base Pitch (F0)</label>
+                  <span id="design-f0-val" style="font-size: 11px; color: var(--text-main); font-family: var(--font-mono);">110 Hz</span>
+                </div>
+                <input type="range" id="design-f0" class="range-slider" min="70" max="320" step="2" value="110" oninput="document.getElementById('design-f0-val').textContent = this.value + ' Hz'">
+              </div>
+              <div class="form-group" style="margin-bottom: 0;">
+                <div style="display: flex; justify-content: space-between;">
+                  <label class="form-label" for="design-warmth">Timbre Warmth (F1/F2)</label>
+                  <span id="design-warmth-val" style="font-size: 11px; color: var(--text-main); font-family: var(--font-mono);">0.88</span>
+                </div>
+                <input type="range" id="design-warmth" class="range-slider" min="0.5" max="1.3" step="0.05" value="0.88" oninput="document.getElementById('design-warmth-val').textContent = parseFloat(this.value).toFixed(2)">
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px;">
+              <div class="form-group" style="margin-bottom: 0;">
+                <div style="display: flex; justify-content: space-between;">
+                  <label class="form-label" for="design-clarity">Vocal Clarity (F3)</label>
+                  <span id="design-clarity-val" style="font-size: 11px; color: var(--text-main); font-family: var(--font-mono);">0.95</span>
+                </div>
+                <input type="range" id="design-clarity" class="range-slider" min="0.5" max="1.3" step="0.05" value="0.95" oninput="document.getElementById('design-clarity-val').textContent = parseFloat(this.value).toFixed(2)">
+              </div>
+              <div class="form-group" style="margin-bottom: 0;">
+                <div style="display: flex; justify-content: space-between;">
+                  <label class="form-label" for="design-pace">Speaking Tempo</label>
+                  <span id="design-pace-val" style="font-size: 11px; color: var(--text-main); font-family: var(--font-mono);">1.00x</span>
+                </div>
+                <input type="range" id="design-pace" class="range-slider" min="0.7" max="1.4" step="0.05" value="1.0" oninput="document.getElementById('design-pace-val').textContent = parseFloat(this.value).toFixed(2) + 'x'">
+              </div>
+            </div>
+
+            <button type="button" class="btn btn-primary" style="width: 100%; padding: 10px;" onclick="synthesizeDesignedVoice()">
+              Generate Designed Voice & Audition
+            </button>
+          </div>
+
+          <!-- Voice Profiles Library -->
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; margin-bottom: 10px;">
+            <h3 style="font-family: var(--font-display); font-size: 13px; margin: 0; color: var(--text-muted);">
+              Voice Library & Personas
+            </h3>
+            <span id="profiles-count-badge" style="font-size: 11px; color: var(--text-dim); font-family: var(--font-mono);">4 profiles</span>
+          </div>
+          
+          <input type="text" id="profile-search" class="form-control" style="font-size: 12px; padding: 6px 12px; margin-bottom: 10px;" placeholder="Search voice profiles by name, register, or accent..." oninput="filterVoiceProfiles()">
+
+          <div id="profiles-list" style="display: flex; flex-direction: column; gap: 8px; max-height: 220px; overflow-y: auto;">
+            <!-- Loaded dynamically -->
+          </div>
+        </div>
+
+        <!-- Right: Synthesis Studio, VoiceStudio Takes Dock & Dubbing -->
+        <div class="panel-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <h2 style="font-family: var(--font-display); font-size: 16px; color: var(--text-main); font-weight: 600; margin: 0;">
+              Speech Synthesis & Takes Dock
+            </h2>
+            <div id="active-voice-pill" style="font-size: 11px; padding: 3px 10px; border-radius: var(--radius-full); background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-subtle); color: var(--text-main); font-family: var(--font-mono);">
+              Active: Sir David (110 Hz)
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <label class="form-label" for="tts-voice-select" style="margin: 0;">Target Speaker Voice</label>
+              <span id="voice-register-tag" style="font-size: 11px; color: var(--text-dim); font-family: var(--font-mono);">Baritone (110 Hz)</span>
+            </div>
+            <select id="tts-voice-select" class="form-control" onchange="handleVoiceSelectChange()">
+              <!-- Dynamically populated with built-in + cloned voices -->
+            </select>
+          </div>
+
+          <!-- Script Panel & SSML Toolchips -->
+          <div class="form-group">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <label class="form-label" for="tts-text" style="margin: 0;">Dialogue / Narration Script</label>
+                <button type="button" class="btn btn-secondary" id="ai-script-btn" style="padding: 2px 8px; font-size: 10.5px;" onclick="generateAiVoiceScript()">
+                  AI Write (Entelechae-code)
+                </button>
+              </div>
+              <div style="display: flex; gap: 8px; align-items: center;">
+                <select id="script-presets-select" style="font-size: 11px; background: rgba(255,255,255,0.05); color: var(--text-dim); border: 1px solid var(--border-subtle); border-radius: 4px; padding: 2px 6px;" onchange="loadScriptPreset(this.value)">
+                  <option value="">Script Presets...</option>
+                  <option value="trailer">Cinematic Film Trailer</option>
+                  <option value="noir">Noir Detective Monologue</option>
+                  <option value="nature">Documentary Nature</option>
+                  <option value="anime">Anime Fantasy Spellcast</option>
+                </select>
+                <span id="script-counter" style="font-size: 11px; color: var(--text-dim); font-family: var(--font-mono);">14 words · ~5.4s</span>
+              </div>
+            </div>
+
+            <!-- Quick Speech Tags -->
+            <div class="tag-chips-bar">
+              <span class="tag-chip" onclick="insertSpeechTag('[pause=0.5s]')">+ Pause (0.5s)</span>
+              <span class="tag-chip" onclick="insertSpeechTag('<emphasis>')">+ Emphasis</span>
+              <span class="tag-chip" onclick="insertSpeechTag('[whisper]')">+ Whisper</span>
+              <span class="tag-chip" onclick="insertSpeechTag('[dramatic]')">+ Dramatic</span>
+              <span class="tag-chip" onclick="insertSpeechTag('[gasp]')">+ Gasp</span>
+              <span class="tag-chip" onclick="insertSpeechTag('[laugh]')">+ Laugh</span>
+            </div>
+
+            <textarea id="tts-text" class="form-control" style="min-height: 90px;" placeholder="Enter script or dialogue to synthesize..." oninput="updateScriptCounter()">The stars flickered over the obsidian towers as our ship breached the atmosphere.</textarea>
+          </div>
+
+          <!-- Acoustic Fine-Tuning Sliders -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div class="form-group">
+              <div style="display: flex; justify-content: space-between;">
+                <label class="form-label" for="tts-speed">Speed (Rate)</label>
+                <span id="speed-val" style="font-size: 11px; color: var(--text-main); font-family: var(--font-mono);">1.00x</span>
+              </div>
+              <input type="range" id="tts-speed" class="range-slider" min="0.6" max="1.6" step="0.05" value="1.0" oninput="document.getElementById('speed-val').textContent = parseFloat(this.value).toFixed(2) + 'x'">
+            </div>
+            <div class="form-group">
+              <div style="display: flex; justify-content: space-between;">
+                <label class="form-label" for="tts-pitch">Pitch (Shift)</label>
+                <span id="pitch-val" style="font-size: 11px; color: var(--text-main); font-family: var(--font-mono);">1.00x</span>
+              </div>
+              <input type="range" id="tts-pitch" class="range-slider" min="0.7" max="1.3" step="0.05" value="1.0" oninput="document.getElementById('pitch-val').textContent = parseFloat(this.value).toFixed(2) + 'x'">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: -6px;">
+            <div class="form-group">
+              <div style="display: flex; justify-content: space-between;">
+                <label class="form-label" for="tts-warmth">Timbre Warmth (F1/F2)</label>
+                <span id="warmth-val" style="font-size: 11px; color: var(--text-main); font-family: var(--font-mono);">0.85</span>
+              </div>
+              <input type="range" id="tts-warmth" class="range-slider" min="0.5" max="1.2" step="0.05" value="0.85" oninput="document.getElementById('warmth-val').textContent = parseFloat(this.value).toFixed(2)">
+            </div>
+            <div class="form-group">
+              <div style="display: flex; justify-content: space-between;">
+                <label class="form-label" for="tts-clarity">Vocal Clarity (F3)</label>
+                <span id="clarity-val" style="font-size: 11px; color: var(--text-main); font-family: var(--font-mono);">0.90</span>
+              </div>
+              <input type="range" id="tts-clarity" class="range-slider" min="0.5" max="1.2" step="0.05" value="0.90" oninput="document.getElementById('clarity-val').textContent = parseFloat(this.value).toFixed(2)">
+            </div>
+          </div>
+
+          <!-- Emotion Styles Toolbar -->
+          <div style="margin-bottom: 14px;">
+            <label class="form-label" style="margin-bottom: 6px;">Acting & Emotion Color</label>
+            <div style="display: flex; gap: 6px;">
+              <button class="btn btn-secondary emotion-btn active" data-emotion="neutral" onclick="setTtsEmotion('neutral', this)" style="flex: 1; padding: 5px 8px; font-size: 11px;">Neutral</button>
+              <button class="btn btn-secondary emotion-btn" data-emotion="dramatic" onclick="setTtsEmotion('dramatic', this)" style="flex: 1; padding: 5px 8px; font-size: 11px;">Dramatic</button>
+              <button class="btn btn-secondary emotion-btn" data-emotion="whisper" onclick="setTtsEmotion('whisper', this)" style="flex: 1; padding: 5px 8px; font-size: 11px;">Whisper</button>
+              <button class="btn btn-secondary emotion-btn" data-emotion="heroic" onclick="setTtsEmotion('heroic', this)" style="flex: 1; padding: 5px 8px; font-size: 11px;">Heroic</button>
+              <button class="btn btn-secondary emotion-btn" data-emotion="melancholy" onclick="setTtsEmotion('melancholy', this)" style="flex: 1; padding: 5px 8px; font-size: 11px;">Melancholy</button>
+            </div>
+          </div>
+
+          <!-- VoiceStudio Audio DSP Broadcast Mastering Rack -->
+          <div style="margin-bottom: 14px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <label class="form-label" style="margin: 0;">Audio DSP Broadcast Mastering Rack</label>
+              <span style="font-size: 10px; font-family: var(--font-mono); color: var(--text-dim);">VoiceStudio REA DSP</span>
+            </div>
+            <div class="dsp-presets-grid" id="dsp-presets-grid">
+              <div class="dsp-preset-chip active" data-dsp="broadcast" onclick="setDspPreset('broadcast', this)">
+                <div class="dsp-chip-title">Broadcast</div>
+                <div class="dsp-chip-desc">80Hz Cut · 2.5:1 Comp · Limiter</div>
+              </div>
+              <div class="dsp-preset-chip" data-dsp="cinematic" onclick="setDspPreset('cinematic', this)">
+                <div class="dsp-chip-title">Cinematic</div>
+                <div class="dsp-chip-desc">60Hz Subcut · Plate Ambience</div>
+              </div>
+              <div class="dsp-preset-chip" data-dsp="podcast" onclick="setDspPreset('podcast', this)">
+                <div class="dsp-chip-title">Podcast</div>
+                <div class="dsp-chip-desc">100Hz Cut · Close-Mic Punch</div>
+              </div>
+              <div class="dsp-preset-chip" data-dsp="warm" onclick="setDspPreset('warm', this)">
+                <div class="dsp-chip-title">Warm</div>
+                <div class="dsp-chip-desc">250Hz Boost · Tube Harmonics</div>
+              </div>
+              <div class="dsp-preset-chip" data-dsp="bright" onclick="setDspPreset('bright', this)">
+                <div class="dsp-chip-title">Bright</div>
+                <div class="dsp-chip-desc">10kHz Air Sheen · Crisp Diction</div>
+              </div>
+              <div class="dsp-preset-chip" data-dsp="raw" onclick="setDspPreset('raw', this)">
+                <div class="dsp-chip-title">Raw</div>
+                <div class="dsp-chip-desc">Pristine Direct Output</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div style="display: flex; gap: 10px; margin-bottom: 18px;">
+            <button class="btn btn-primary" style="flex: 1;" onclick="synthesizeSpeech()">
+              Synthesize Mastered Speech
+            </button>
+            <button class="btn btn-secondary" onclick="generateDubbingCues()">
+              Auto-Sync Dubbing
+            </button>
+          </div>
+
+          <!-- VoiceStudio Takes Dock & Audio Player -->
+          <div style="padding: 14px; border-radius: var(--radius-sm); background: #0c0c0e; border: 1px solid var(--border-subtle);">
+            <!-- VoiceStudio A/B Comparison Audition Dock -->
+            <div class="ab-audition-dock">
+              <span class="ab-audition-label">
+                A/B Audition:
+              </span>
+              <div class="ab-toggle-group">
+                <button type="button" class="ab-btn" id="ab-btn-ref" onclick="playAuditionAB('ref')" title="Audition Captured / Uploaded Reference Vocal">
+                  A: Reference Vocal
+                </button>
+                <button type="button" class="ab-btn ab-btn-take active" id="ab-btn-take" onclick="playAuditionAB('take')" title="Audition Mastered Cloned Take">
+                  B: Cloned Take
+                </button>
+              </div>
+            </div>
+
+            <div style="font-size: 11.5px; color: var(--text-dim); margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+              <span id="take-active-label" style="font-weight: 600; color: #fff;">LATEST SYNTHESIS TAKE</span>
+              <div style="display: flex; gap: 8px;">
+                <button class="btn btn-secondary" id="btn-promote-take" style="padding: 3px 8px; font-size: 10px; display: none;" onclick="promoteCurrentTake()">
+                  Save as Voice Profile
+                </button>
+                <a id="btn-download-wav" class="btn btn-secondary" style="padding: 3px 8px; font-size: 10px; display: none; text-decoration: none;" download="speech_take.wav">
+                  WAV
+                </a>
+                <span id="tts-meta-badge" style="color: var(--text-dim); font-family: var(--font-mono); font-size: 11px;">Ready</span>
+              </div>
+            </div>
+            <audio id="tts-audio-player" controls style="width: 100%; height: 36px; border-radius: 4px; outline: none;"></audio>
+            <div id="take-matched-model-box" style="margin-top: 8px; display: flex; justify-content: space-between; align-items: center;">
+              <span class="matched-model-badge" id="take-matched-model-badge">Matched Neural: en-GB-RyanNeural (Δ+0Hz)</span>
+              <span style="font-size: 10.5px; font-family: var(--font-mono); color: var(--text-dim);" id="take-dsp-indicator">Broadcast Mastering</span>
+            </div>
+          </div>
+
+          <!-- Takes History Dock -->
+          <div style="margin-top: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span style="font-size: 11.5px; font-weight: 600; color: var(--text-dim); text-transform: uppercase;">
+                Recent Takes Dock
+              </span>
+              <span id="takes-count-label" style="font-size: 11px; color: var(--text-dim); font-family: var(--font-mono);">0 takes</span>
+            </div>
+            <div id="takes-list-container" class="takes-list-container">
+              <!-- Takes list populated dynamically -->
+            </div>
+          </div>
+
+          <!-- Dubbing Cue Sheet Table -->
+          <div id="dubbing-table-container" style="margin-top: 18px; display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <h4 style="font-size: 12.5px; color: var(--text-muted); margin: 0;">Synchronized Viseme Cue Sheet</h4>
+              <button class="btn btn-secondary" style="padding: 3px 8px; font-size: 11px;" onclick="syncSpeechToStage()">
+                Sync to Stage Canvas
+              </button>
+            </div>
+            <div style="max-height: 140px; overflow-y: auto; border: 1px solid var(--border-subtle); border-radius: 6px;">
+              <table style="width: 100%; font-size: 12px; border-collapse: collapse; text-align: left;" id="dubbing-cues-table">
+                <!-- Dynamically populated -->
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 5: CLI PROXY GATEWAY -->
+    <section id="proxy-view" class="view-section">
+      <div class="hero-banner">
+        <div class="hero-badge">GATEWAY // CLI PROXY API</div>
+        <h1 class="hero-title">CLIProxyAPI Gateway & Model Routing</h1>
+        <p class="hero-sub">
+          Seamlessly connect to Claude Opus 5.5, Gemini 3.8, OpenAI GPT-5, Kimi K3, and Grok via unified proxy channels.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 340px 1fr; gap: 20px;">
+        <!-- Proxy Status Card -->
+        <div class="panel-card">
+          <h2 style="font-family: var(--font-display); font-size: 15px; margin-bottom: 14px; color: var(--text-main); font-weight: 600;">
+            Proxy Daemon Status
+          </h2>
+          <div style="padding: 12px; background: #0c0c0e; border-radius: var(--radius-xs); border: 1px solid var(--border-subtle); margin-bottom: 16px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 12.5px;">
+              <span style="color: var(--text-muted);">Status:</span>
+              <span id="proxy-status-badge" style="color: var(--text-main); font-weight: 600; font-family: var(--font-mono);">ACTIVE (STANDALONE BRIDGE)</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 12.5px;">
+              <span style="color: var(--text-muted);">Port:</span>
+              <span style="font-family: var(--font-mono); color: var(--text-muted);">8317 / 5173</span>
+            </div>
+          </div>
+
+          <h3 style="font-size: 12px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 10px; font-weight: 600;">
+            Configured Models
+          </h3>
+          <div id="proxy-models-list" style="display: flex; flex-direction: column; gap: 8px;">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+        <!-- Proxy Dispatch Playground -->
+        <div class="panel-card">
+          <h2 style="font-family: var(--font-display); font-size: 15px; margin-bottom: 14px; color: var(--text-main); font-weight: 600;">
+            Interactive Route Dispatcher
+          </h2>
+
+          <div class="form-group">
+            <label class="form-label" for="proxy-test-model">Select Target Model</label>
+            <select id="proxy-test-model" class="form-control">
+              <option value="claude-opus-5.5">Claude Opus 5.5 (Film & Animation Specialist)</option>
+              <option value="gemini-3.8-flash">Gemini 3.8 Flash (Instant Agent Loops)</option>
+              <option value="gemini-3.1-pro">Gemini 3.1 Pro (Multimodal Logic)</option>
+              <option value="gpt-5.6">GPT-5.6 (Complex Code Architect)</option>
+              <option value="kimi-k3">Kimi K3 (1M Context Long-Horizon)</option>
+              <option value="grok-4.5">Grok 4.5 (Frontier Coding)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="proxy-test-prompt">Prompt Payload</label>
+            <textarea id="proxy-test-prompt" class="form-control" style="min-height: 110px;" placeholder="Enter prompt to dispatch through the proxy...">Create an SVG animation of a glowing origami crane folding itself in mid-air with paper rustling sound markers.</textarea>
+          </div>
+
+          <button class="btn btn-primary" onclick="testProxyDispatch()">
+            Dispatch Prompt
+          </button>
+
+          <div style="margin-top: 18px;">
+            <label class="form-label">Response Telemetry</label>
+            <pre class="code-preview-box" id="proxy-response-box">// Proxy dispatch response will appear here...</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Prompt & Video Modal -->
+  <div class="modal-overlay" id="prompt-modal" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <h3 id="modal-title" style="font-family: var(--font-display); font-size: 16px; color: var(--text-main); font-weight: 600;">Prompt Details</h3>
+          <div id="modal-meta" style="font-size: 12px; color: var(--text-muted); margin-top: 3px;"></div>
+        </div>
+        <button class="btn btn-secondary" onclick="closeModal()" style="padding: 4px 10px; font-size: 12px;" aria-label="Close modal">✕</button>
+      </div>
+      <div class="modal-body">
+        <!-- Video Preview Container: Rendered above the prompt content -->
+        <div id="modal-video-container" class="modal-video-box" style="display: none;"></div>
+        <div class="modal-prompt-label">Production Prompt / Code Specification:</div>
+        <pre class="code-preview-box" id="modal-content"></pre>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal()">Close</button>
+        <button class="btn btn-primary" onclick="copyModalContent()">Copy Prompt</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cinematic Screening Room Theatre Modal -->
+  <div class="screening-modal-overlay" id="screening-modal" role="dialog" aria-modal="true" aria-label="Screening room">
+    <div class="screening-theatre">
+      <div class="screening-top-bar">
+        <div class="screening-top-left">
+          <div class="screening-badge">OPUS-MOTION SCREENING ROOM</div>
+          <div id="screening-engine-switch" class="screening-engine-switch" style="display: none;">
+            <button id="engine-btn-video" class="screening-engine-btn active" onclick="switchScreeningEngine('video')">Video Stream</button>
+            <button id="engine-btn-web" class="screening-engine-btn" onclick="switchScreeningEngine('web')">Interactive Scene</button>
+          </div>
+        </div>
+        <button class="screening-close-btn" onclick="closeScreeningRoom()" aria-label="Close screening room">✕ Close</button>
+      </div>
+      
+      <div class="screening-video-wrapper">
+        <video id="screening-video" controls autoplay playsinline preload="auto"></video>
+        <iframe id="screening-iframe" allow="autoplay; fullscreen" style="width: 100%; height: 100%; border: none; display: none;"></iframe>
+      </div>
+
+      <div class="screening-envelope">
+        <div class="screening-kicker" id="screening-kicker">Nominee for Best Cinematic Style in Code</div>
+        <h2 id="screening-title">Style Film Title</h2>
+        <div id="screening-sub" class="screening-film-name">for “Film Title”</div>
+        <div id="screening-timecode-badge" class="screening-timecode-badge" style="display: none;"></div>
+        <p id="screening-line" class="screening-logline">Style story logline</p>
+        
+        <div class="screening-footer-actions">
+          <button class="btn btn-primary" id="screening-direct-btn">Launch in Director</button>
+          <button class="btn btn-secondary" id="screening-prompt-btn">View Style Prompt</button>
+          <a class="btn btn-secondary" id="screening-external-link" target="_blank" rel="noopener" style="display: none;">Open Web Scene ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

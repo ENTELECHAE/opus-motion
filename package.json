@@ -1,0 +1,27 @@
+{
+  "name": "opus-motion",
+  "version": "1.0.0",
+  "description": "All-in-one AI film studio, 59+ code animation styles, 703 viral video prompts, REA VoiceStudio voice cloning, and CLI proxy gateway.",
+  "main": "server.py",
+  "scripts": {
+    "start": "python server.py",
+    "studio": "python cli.py studio --port 5173",
+    "styles": "python cli.py styles",
+    "prompts": "python cli.py prompts",
+    "voice": "python cli.py voice --list",
+    "proxy": "python cli.py proxy"
+  },
+  "keywords": [
+    "ai-animation",
+    "claude-opus",
+    "gemini",
+    "voice-cloning",
+    "p5js",
+    "canvas",
+    "threejs",
+    "filmmaking",
+    "creative-coding"
+  ],
+  "author": "Antigravity & Entelechae",
+  "license": "MIT"
+}

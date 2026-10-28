@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "opus-motion"
+version = "1.0.0"
+description = "All-in-one AI film studio, 157 code animation styles, 703 viral prompts, VoiceStudio REA cloning, and CLI proxy gateway"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Antigravity & Entelechae" }]
+requires-python = ">=3.9"
+dependencies = []
+
+[project.optional-dependencies]
+accelerate = [
+    "numpy>=1.24.0",
+    "requests>=2.31.0"
+]
+dev = [
+    "pytest>=7.0.0"
+]
+
+[project.scripts]
+opus-motion = "cli:main"

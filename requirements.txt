@@ -1,0 +1,5 @@
+# Opus-Motion Core Requirements
+# The core server and CLI are built on Python 3.9+ standard library.
+# Optional accelerators:
+# numpy>=1.24.0
+# requests>=2.31.0

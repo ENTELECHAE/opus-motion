@@ -1,0 +1,101 @@
+{
+  "characters": [
+    {
+      "id": "clawd",
+      "name": "Clawd",
+      "type": "2d_mascot",
+      "style": "watercolor_brush",
+      "description": "Blocky mascot in watercolor and ink, 10x6 body, stubby legs, arm nubs, expressive slit eyes.",
+      "emotions": ["happy", "proud", "curious", "focused", "sad", "scared", "surprised", "angry", "love", "sleepy"],
+      "views": ["front", "q", "side", "qback", "back"],
+      "dances": ["bounce", "sway", "spin", "wave"],
+      "hats": ["party", "beret", "crown", "beanie", "cowboy", "detective"]
+    },
+    {
+      "id": "noir_detective",
+      "name": "Jack Marlowe",
+      "type": "noir_human",
+      "style": "halftone_dossier",
+      "description": "Trenchcoat, fedora, sharp high-contrast silhouette, shadow-masked expression.",
+      "emotions": ["cynical", "observant", "tense", "determined"],
+      "views": ["profile_shadow", "front_lit", "silhouetted_window"]
+    },
+    {
+      "id": "cyber_runner",
+      "name": "Vex-09",
+      "type": "scifi_cyborg",
+      "style": "hologram_hud",
+      "description": "Glowing wireframe HUD, neon visor, dynamic glitch trails, isometric perspective.",
+      "emotions": ["neutral", "alarmed", "overclocked", "target_acquired"],
+      "views": ["iso_3d", "first_person_hud", "side_wireframe"]
+    },
+    {
+      "id": "pixel_wanderer",
+      "name": "Ember",
+      "type": "pixel_sprite",
+      "style": "pixel_rpg",
+      "description": "16-bit nostalgic adventurer with billowing scarf, sword sheath, and campfire stance.",
+      "emotions": ["idle", "run", "cast_spell", "victory", "faint"],
+      "views": ["down", "up", "left", "right"]
+    }
+  ],
+  "voices": [
+    {
+      "id": "doc_narrator",
+      "name": "Sir David (Documentary)",
+      "gender": "male",
+      "timbre": "warm, authoritative, deliberate",
+      "recommended_styles": ["visual-investigation", "satellite-briefing", "nature", "newsreel"],
+      "default_speed": 0.95,
+      "default_pitch": 0.98,
+      "preview_text": "Beneath the canopy of the ancient forest, quiet signals travel across the earth."
+    },
+    {
+      "id": "noir_gravel",
+      "name": "Midnight Detective",
+      "gender": "male",
+      "timbre": "gravelly, cynical, low-frequency smoke",
+      "recommended_styles": ["halftone-dossier", "silent-film", "spy-titles"],
+      "default_speed": 0.92,
+      "default_pitch": 0.88,
+      "preview_text": "The rain didn't wash away the sins of the 4th precinct. It just made them shine."
+    },
+    {
+      "id": "anime_protagonist",
+      "name": "Rin (Heroic Anime)",
+      "gender": "female",
+      "timbre": "bright, determined, energetic",
+      "recommended_styles": ["cel-anime-80s", "hd-2d", "scifi-toon"],
+      "default_speed": 1.05,
+      "default_pitch": 1.08,
+      "preview_text": "Even if the sky shatters, we will keep running until tomorrow reaches us!"
+    },
+    {
+      "id": "playful_mascot",
+      "name": "Pip (Playful Clawd)",
+      "gender": "neutral",
+      "timbre": "cheerful, melodic, warm paper",
+      "recommended_styles": ["crayon-book", "watercolor", "paper-popup"],
+      "default_speed": 1.02,
+      "default_pitch": 1.15,
+      "preview_text": "Look what I found behind the painted leaves! It is glowing softly."
+    },
+    {
+      "id": "hologram_ai",
+      "name": "Aether-9 (Synthetic Assistant)",
+      "gender": "female",
+      "timbre": "precise, resonant, crisp digital reverb",
+      "recommended_styles": ["hologram-hud", "lidar-survey", "dark-keynote"],
+      "default_speed": 1.00,
+      "default_pitch": 1.02,
+      "preview_text": "Subsystem telemetry verified. Commencing quantum path synchronization."
+    }
+  ],
+  "transitions": [
+    { "id": "brush_wipe", "name": "Watercolor Brush Wipe", "duration": 0.4 },
+    { "id": "glitch_cut", "name": "Chromatic Glitch Cut", "duration": 0.15 },
+    { "id": "halftone_dissolve", "name": "Halftone Dot Dissolve", "duration": 0.5 },
+    { "id": "camera_snap", "name": "Snap Zoom & Motion Blur", "duration": 0.25 },
+    { "id": "split_curtain", "name": "Constructivist Split Screen", "duration": 0.35 }
+  ]
+}
